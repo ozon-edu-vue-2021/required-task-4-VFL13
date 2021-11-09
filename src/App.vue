@@ -16,21 +16,24 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #2c3e50;
-  background-color: #fafafa;
-  padding: 24px;
-  box-sizing: border-box;
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  font-family: "roboto", sans-serif;
 }
 
-html,
-body,
-#app {
-  height: 100%;
-}
+/*#app {*/
+/*  font-family: Avenir, Helvetica, Arial, sans-serif;*/
+/*  color: #2c3e50;*/
+/*  background-color: #fafafa;*/
 
-* {
-  box-sizing: border-box;
+/*  box-sizing: border-box;*/
+/*}*/
+
+#app {
+  /*height: 100%;*/
 }
 </style>
