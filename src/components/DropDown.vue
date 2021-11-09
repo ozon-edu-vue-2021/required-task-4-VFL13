@@ -4,7 +4,7 @@
       <slot name="drop-dow-toggle" />
     </div>
 
-    <div v-show="opened">
+    <div class="list-items" v-show="opened">
       <slot name="drop-dow-content" />
     </div>
   </div>
@@ -18,18 +18,19 @@ export default {
   directives: {
     ClickOutside,
   },
-  data: () => ({
-    opened: false,
-  }),
+  props: {
+    opened: {
+      type: Boolean,
+      default: false,
+    },
+  },
   methods: {
     toggle() {
-      this.opened = !this.opened;
+      this.$emit("toggleActive", !this.opened);
     },
     close() {
-      this.opened = false;
+      this.$emit("toggleActive", false);
     },
   },
 };
 </script>
-
-<style scoped></style>

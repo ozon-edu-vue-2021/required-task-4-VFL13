@@ -13,7 +13,7 @@
       />
       <ArrowSVG class="icon" />
       <div v-show="showPlaceholder" :class="placeholderClasses">
-        {{ $attrs.placeholder }}
+        <div class="placeholder-text">{{ $attrs.placeholder }}</div>
       </div>
     </div>
     <p class="error">{{ errorMessage }}</p>
@@ -51,6 +51,11 @@ export default {
     },
     blurHandler() {
       this.focused = false;
+      this.$emit("setActive", false);
+    },
+    focusHandler() {
+      this.focused = true;
+      this.$emit("setActive", true);
     },
   },
   watch: {

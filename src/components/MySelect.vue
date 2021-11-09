@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <DropDown @toggleActive="active = !active">
+    <DropDown @toggleActive="setOpened" :opened="opened">
       <template #drop-dow-toggle>
         <MyInputSelect
           :value="selected"
@@ -12,6 +12,7 @@
           :label="label"
           @not-valid="$emit('not-valid')"
           @valid="$emit('valid')"
+          @setActive="setActive"
         />
       </template>
       <template #drop-dow-content>
@@ -20,9 +21,9 @@
             v-for="item in filteredItems"
             :key="item.id"
             :class="[
-              'multiselect-list-item',
+              'select-list-item',
               {
-                'multiselect-list-item_selected': item[propName] === selected,
+                'select-list-item_selected': item[propName] === selected,
               },
             ]"
             @click="selectHandler(item[propName])"
@@ -63,6 +64,7 @@ export default {
       selected: null,
       active: false,
       validateList: [],
+      opened: false,
     };
   },
   created() {
@@ -80,9 +82,16 @@ export default {
     },
   },
   methods: {
+    setOpened(val) {
+      this.opened = val || this.active;
+    },
+    setActive(val) {
+      this.active = val;
+    },
     selectHandler(item) {
       this.selected = item;
       this.$emit("input", this.selected);
+      this.opened = false;
     },
     inputHandler() {
       this.$emit("input", this.selected);
@@ -107,9 +116,21 @@ export default {
   border-bottom: 2px solid dodgerblue;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  overflow: scroll;
   display: none;
   z-index: 2;
+}
+
+.options::-webkit-scrollbar-thumb {
+  background-color: dodgerblue;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+  height: 30px;
+}
+
+.options::-webkit-scrollbar {
+  width: 16px;
+
 }
 
 .options.active {
@@ -117,6 +138,7 @@ export default {
   margin-left: 7px;
   margin-right: 7px;
   overflow-x: hidden;
+  overflow-y: auto;
   margin-bottom: 7px;
 }
 .not-found {
@@ -125,18 +147,20 @@ export default {
   padding: 0 15px;
   line-height: 20px;
 }
-.options .multiselect-list-item {
+.options .select-list-item {
   color: black;
   height: 20px;
   padding: 0 15px;
   line-height: 20px;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.multiselect-list-item:hover {
+.select-list-item:hover {
   background: #8d95a5;
 }
 
-.options .multiselect-list-item_selected {
+.options .select-list-item_selected {
   background: dodgerblue;
 }
 </style>

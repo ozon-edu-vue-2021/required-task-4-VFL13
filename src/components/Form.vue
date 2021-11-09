@@ -55,6 +55,7 @@ export default {
       if (this.allDataValid) {
         const sendData = this.user;
         sendData.passport = this.passport;
+        console.info("FORM DATA:", sendData);
       } else {
         alert("Форма не заполнена");
       }

@@ -137,10 +137,13 @@ export default {
   width: 100%;
   border-radius: 10px;
   border: 2px solid dimgray;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .input-wrapper_focused {
   border: 2px solid dodgerblue;
+  overflow: unset;
 }
 
 .input-wrapper_error {
@@ -161,7 +164,7 @@ export default {
 .input-placeholder {
   position: absolute;
   display: flex;
-  padding: 6px 16px 6px 6px;
+  padding: 6px 20px 6px 6px;
   width: 100%;
   color: #8d95a5;
   white-space: nowrap;
@@ -169,7 +172,14 @@ export default {
   pointer-events: none;
   transform-origin: left top;
   transition: 300ms;
+  box-sizing: border-box;
 }
+
+.placeholder-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .input-placeholder_lifted {
   transform: translateY(-20px) scale(0.75);
 }
