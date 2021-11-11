@@ -18,13 +18,14 @@ export default {
 <style>
 body {
   width: 100%;
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: #ffffff;
   font-family: "roboto", sans-serif;
+  overflow: scroll;
 }
 #app {
-  max-width: 660px;
+  width: 660px;
 }
 </style>
