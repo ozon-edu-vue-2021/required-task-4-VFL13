@@ -18,22 +18,13 @@ export default {
 <style>
 body {
   width: 100%;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   background: #ffffff;
   font-family: "roboto", sans-serif;
 }
-
-/*#app {*/
-/*  font-family: Avenir, Helvetica, Arial, sans-serif;*/
-/*  color: #2c3e50;*/
-/*  background-color: #fafafa;*/
-
-/*  box-sizing: border-box;*/
-/*}*/
-
 #app {
-  /*height: 100%;*/
+  max-width: 660px;
 }
 </style>

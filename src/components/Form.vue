@@ -53,9 +53,10 @@ export default {
     },
     sendData() {
       if (this.allDataValid) {
-        const sendData = this.user;
-        sendData.passport = this.passport;
-        console.info("FORM DATA:", sendData);
+        console.info("FORM DATA:", {
+          user: this.user,
+          passport: this.passport,
+        });
       } else {
         alert("Форма не заполнена");
       }

@@ -91,17 +91,13 @@ export default {
   },
   computed: {
     formValid() {
-      if (
+      return (
         this.passportValidation.number &&
         this.passportValidation.country &&
         this.passportValidation.passportType &&
         this.passportValidation.lastName &&
         this.passportValidation.firstName
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+      );
     },
   },
   methods: {},

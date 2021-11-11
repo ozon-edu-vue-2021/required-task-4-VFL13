@@ -14,18 +14,18 @@
         class="row-item"
       />
     </div>
-    <template v-if="isRussian">
-      <PassportRussian
-        @valid="setValidRussianPassport"
-        @setData="setDataRussianPassport"
-      />
-    </template>
-    <template v-else>
-      <PassportOtherCountry
-        @valid="setValidOtherCountryPassport"
-        @setData="setDataOtherCountryPassport"
-      />
-    </template>
+
+    <PassportRussian
+      v-if="isRussian"
+      @valid="setValidRussianPassport"
+      @setData="setDataRussianPassport"
+    />
+
+    <PassportOtherCountry
+      v-else
+      @valid="setValidOtherCountryPassport"
+      @setData="setDataOtherCountryPassport"
+    />
 
     <div class="row">
       <h5 class="row-item">Меняли ли вы фамилию или имя</h5>
@@ -106,15 +106,12 @@ export default {
       );
     },
     formValid() {
-      if (
+      return (
         ((this.isRussian && this.passportValidation.russian) ||
           (!this.isRussian && this.passportValidation.otherCountry)) &&
         this.changedLastNameIsValid &&
         this.passportValidation.citizenships
-      ) {
-        return true;
-      }
-      return false;
+      );
     },
   },
   methods: {

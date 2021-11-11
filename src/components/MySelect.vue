@@ -130,7 +130,6 @@ export default {
 
 .options::-webkit-scrollbar {
   width: 16px;
-
 }
 
 .options.active {

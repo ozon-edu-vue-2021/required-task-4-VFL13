@@ -127,8 +127,7 @@ export default {
       return this.user.gender === "male";
     },
     formValid() {
-      let key = "";
-      for (key of Object.keys(this.userValidation)) {
+      for (const key of Object.keys(this.userValidation)) {
         if (!this.userValidation[key]) {
           return false;
         }
